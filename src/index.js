@@ -17,9 +17,11 @@ class App extends Component {
   }
 
   render() {
+    const { sayHi } = this.props;
     const { count } = this.state;
     return (
       <div className="App">
+        <div>{sayHi}</div>
         <div>{count}</div>
         <button onClick={this.setCount}>Click me!</button>
       </div>
@@ -28,4 +30,4 @@ class App extends Component {
 }
 
 const rootElement = document.getElementById('root');
-ReactDOM.render(<App />, rootElement);
+ReactDOM.render(<App sayHi="Hello World" />, rootElement);
