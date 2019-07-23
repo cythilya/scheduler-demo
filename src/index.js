@@ -6,7 +6,7 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { count: 0 };
+    this.state = { count: 0, value: '' };
     this.setCount = this.setCount.bind(this);
   }
 
@@ -24,7 +24,13 @@ class App extends Component {
       <div className="App">
         <div>{sayHi}</div>
         <div>{count}</div>
-        <button onClick={this.setCount}>Click me!</button>
+        <input
+          value={this.state.value}
+          onChange={(e) => {
+            this.setState({value: e.target.value});
+          }}
+        />
+        <button onClick={this.setCount}>Click me! {count}</button>
       </div>
     );
   }
