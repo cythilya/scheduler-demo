@@ -1,8 +1,6 @@
 # Scheduler
 
-[Scheduler](https://www.npmjs.com/package/scheduler) 這個 package 本來是 React Core 內部在使用的，但是現在開放出來可在瀏覽器環境應用，解決 App 效能不佳的問題。
-
-我們也可以藉此來了解 Scheduler 到底是怎麼運作的，或如何更好地利用它來解決各式各樣的問題。
+[Scheduler](https://www.npmjs.com/package/scheduler) 這個 package 本來是 React Core 內部在使用的，但是現在開放出來可在瀏覽器環境應用，解決 App 效能不佳的問題，我們也可以藉此來了解 Scheduler 到底是怎麼運作的。
 
 ## 排程
 
