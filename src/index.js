@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import {
   unstable_runWithPriority,
   unstable_scheduleCallback,
-  unstable_LowPriority
+  unstable_ImmediatePriority,
+  unstable_LowPriority,
 } from 'scheduler';
 
 import './styles.css';
@@ -26,15 +27,17 @@ class App extends Component {
   }
 
   doFirst() {
-    unstable_scheduleCallback(() => {
-      console.log('first');
+    unstable_runWithPriority(unstable_ImmediatePriority, () => {
+      unstable_scheduleCallback(() => {
+        console.log('first');
+      });
     });
   }
 
   doSecond() {
     unstable_runWithPriority(unstable_LowPriority, () => {
       unstable_scheduleCallback(() => {
-        console.log('secoed'); // low priority: 4
+        console.log('secoed');
       });
     });
   }
