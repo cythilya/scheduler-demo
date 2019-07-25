@@ -41,7 +41,7 @@ unstable_runWithPriority(priority, () => {
 
 第四步，檢視執行結果。
 
-![scheduler](https://cythilya.github.io/assets/react-core/scheduler-demo-2019-07-25.png)
+![scheduler](https://cythilya.github.io/assets/react-core/scheduler-demo-2019-07-25.png?123)
 
 ## 解決什麼問題？
 
