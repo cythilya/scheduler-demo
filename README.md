@@ -14,7 +14,7 @@
 
 ## 範例
 
-加入兩個任務 - doFirst 和 doSecond
+加入兩個任務 - doFirst 和 doSecond。
 
 優先順序為 1 與 4，雖然先加入 doSecond 再加入 doFirst，但由於是用優先順序排序的，因此先執行 doFirst，再執行 doSecond。
 

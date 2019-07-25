@@ -23,7 +23,11 @@ class App extends Component {
     this.setState({ count: newCount });
 
     this.doSecond();
-    this.doFirst();
+    this.doFirst(); // top priority!
+    this.doSecond();
+    this.doSecond();
+    this.doSecond();
+    this.doSecond();
   }
 
   doFirst() {
