@@ -1,24 +1,45 @@
 # Scheduler
 
-[Scheduler](https://www.npmjs.com/package/scheduler) 這個 package 本來是 React Core 內部在使用的，但是現在開放出來可在瀏覽器環境應用，解決 App 效能不佳的問題，我們也可以藉此來了解 Scheduler 到底是怎麼運作的。
+[Scheduler](https://www.npmjs.com/package/scheduler) 這個 package 本來是 React Core 內部在使用的，但是現在開放出來可用於瀏覽器環境，解決 App 效能不佳的問題，我們也可藉此了解 Scheduler 到底是怎麼運作的。
 
 ## 排程
 
-首先我們先來了解幾個 function
+先來了解幾個 function
 
-- [runWithPriority](https://github.com/cythilya/react/blob/master/packages/scheduler/src/Scheduler.js#L295)： 用於設定任務的優先等級，預設是 Normal，對應的過期時間是 5 秒，表示這不是需要立即反應的工作。
-- [scheduleCallback](https://github.com/cythilya/react/blob/master/packages/scheduler/src/Scheduler.js#L373)：用於插入新任務並做排序。
+- [runWithPriority](https://github.com/cythilya/react/blob/master/packages/scheduler/src/Scheduler.js#L295)： 設定任務的優先等級，預設是 Normal，對應的過期時間是 5 秒，表示這不是需要立即反應的工作（[備註](#備註)）。
+- [scheduleCallback](https://github.com/cythilya/react/blob/master/packages/scheduler/src/Scheduler.js#L373)：插入新任務並做排序。
 - [requestHostCallback](https://github.com/cythilya/react/blob/master/packages/scheduler/src/forks/SchedulerHostConfig.default.js#L317)：選取任務來執行。
 
 ## 範例
 
-點擊「 Click me!」後加入兩個任務 - doFirst 和 doSecond。
+點此看[範例程式碼](https://github.com/cythilya/scheduler-demo)。
 
-優先順序為 1 與 4，雖然先加入 doSecond 再加入 doFirst，但由於是用優先順序排序的，因此先執行 doFirst，再執行 doSecond。
+原始碼說明如下。
 
-[範例](https://github.com/cythilya/scheduler-demo)。
+第一步，import 所需常數和方法。
 
-執行結果
+```javascript
+import {
+  unstable_runWithPriority,
+  unstable_scheduleCallback,
+  unstable_ImmediatePriority,
+  unstable_LowPriority,
+} from 'scheduler';
+```
+
+第二部，加入要執行的任務，參數 priority 用來設定優先等級，例如 unstable_ImmediatePriority（Immediate 要立即執行）、unstable_LowPriority（Low 表示可被等待，但仍需要完成）。
+
+```javascript
+unstable_runWithPriority(priority, () => {
+  unstable_scheduleCallback(() => {
+    // 要做的事情...
+  });
+});
+```
+
+第三步，啟動專案，點擊畫面上的「Click me!」後加入兩個任務 - doFirst 和 doSecond。優先順序為 1 與 4，雖然先加入 doSecond 再加入 doFirst，但由於是用優先順序排序的，因此先執行 doFirst，再執行 doSecond。
+
+第四步，檢視執行結果。
 
 ```javascript
 first;
