@@ -27,7 +27,7 @@ import {
 } from 'scheduler';
 ```
 
-第二部，加入要執行的任務，參數 priority 用來設定優先等級，例如 unstable_ImmediatePriority（Immediate 要立即執行）、unstable_LowPriority（Low 表示可被等待，但仍需要完成）。
+第二步，加入要執行的任務，參數 priority 用來設定優先等級，例如 unstable_ImmediatePriority（Immediate 要立即執行）、unstable_LowPriority（Low 表示可被等待，但仍需要完成）。
 
 ```javascript
 unstable_runWithPriority(priority, () => {
